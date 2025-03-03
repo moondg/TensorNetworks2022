@@ -32,8 +32,8 @@ function Cleft = updateLeft(Cleft,rankC,B,X,rankX,A)
 %          /--------->- A ->--            /---->-- 2
 %          |            | 3               |
 %        2 ^            ^                 |
-%          |            | 2               |      
-%        Cleft          X         =>    Cleft 
+%          |            | 2               |
+%        Cleft          X         =>    Cleft
 %          |            | 1               |
 %        1 ^            ^                 |
 %          |            | 3               |
@@ -44,7 +44,7 @@ function Cleft = updateLeft(Cleft,rankC,B,X,rankX,A)
 %          /--------->- A ->--            /---->-- 2
 %          |            | 3               |
 %        2 ^            ^                 |
-%          |    3       | 2               |      
+%          |    3       | 2               |
 %        Cleft---       X         =>    Cleft ---- 3
 %          |            | 1               |
 %        1 ^            ^                 |
@@ -56,7 +56,7 @@ function Cleft = updateLeft(Cleft,rankC,B,X,rankX,A)
 %          /--------->- A ->--            /---->-- 2
 %          |            | 3               |
 %        2 ^            ^                 |
-%          |          2 |   3             |      
+%          |          2 |   3             |
 %        Cleft          X ----    =>    Cleft ---- 3
 %          |          1 |                 |
 %        1 ^            ^                 |
@@ -68,7 +68,7 @@ function Cleft = updateLeft(Cleft,rankC,B,X,rankX,A)
 %          /--------->- A ->--            /---->-- 2
 %          |            | 3               |
 %        2 ^            ^                 |
-%          |   3     3  | 2               |      
+%          |   3     3  | 2               |
 %        Cleft--------- X         =>    Cleft
 %          |            | 1               |
 %        1 ^            ^                 |
@@ -80,7 +80,7 @@ function Cleft = updateLeft(Cleft,rankC,B,X,rankX,A)
 %          /--------->- A ->--            /---->-- 2
 %          |            | 3               |
 %        2 ^            ^                 |
-%          |   3    3   | 2               |      
+%          |   3    3   | 2               |
 %        Cleft--------- X ---- 4   =>   Cleft ---- 3
 %          |            | 1               |
 %        1 ^            ^                 |
@@ -131,7 +131,7 @@ if ~isempty(X)
             end
         else % (rankC,rankX) = (2,2), (2,3), (3,2)
             T = contract(Cleft,rankC,2,T,rankX+1,rankX);
-            Cleft = contract(B,3,[1 3],T,rankC+rankX-1,[1 rankC],[1 (3:rankC) 2]);
+            Cleft = contract(B,3,[1 3],T,rankC+rankX-1,[1 rankC],[1 (3:rankC+rankX-2) 2]);
         end
     elseif (rankX == 4) && (size(X,1) == 1) % no Cleft, rankX = 4
         % if X is rank-4 and its left leg is dummy, and Cleft is empty (i.e., identity)
